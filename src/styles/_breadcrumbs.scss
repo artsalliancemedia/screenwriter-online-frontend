@@ -1,0 +1,15 @@
+.v-breadcrumbs {
+  .v-breadcrumbs__divider ~ li {
+    text-transform: capitalize;
+  }
+  li:last-child {
+    text-transform: none;
+  }
+}
+.listWrapper {
+  .v-breadcrumbs {
+    li {
+      text-transform: capitalize;
+    }
+  }
+}

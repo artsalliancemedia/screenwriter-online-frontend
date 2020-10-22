@@ -1,0 +1,23 @@
+@mixin gradient {
+  background: linear-gradient(to right, #0f2027 0%, #12697e 100%);
+}
+@mixin gradient-producer {
+  background: linear-gradient(to right, #467490 0%, #3f2e60 100%);
+
+}
+.gradient {
+  @include gradient;
+}
+.gradient-producer {
+  @include gradient-producer;
+}
+.gradient-primary--text {
+  @extend .gradient;
+  color: #fff !important;
+}
+.white-icon {
+  filter: brightness(20);
+}
+.white-bg {
+  background-color: #fff;
+}

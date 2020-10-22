@@ -1,0 +1,6 @@
+.dialogTitle {
+  color: $text-primary;
+  &:first-letter {
+    text-transform: capitalize;
+  }
+}

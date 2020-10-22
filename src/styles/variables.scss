@@ -1,0 +1,36 @@
+@import '~vuetify/src/styles/styles.sass';
+
+$primary: #2A6765;
+$primary--text: #12697e;
+$text-primary: #313541;
+$text-secondary: #9b9b9b;
+$secondary: #2c5364;
+$accent: #82b1ff;
+$error: #e44545;
+$info: #0f72db;
+$success: #72d17f;
+$warning: #f5a623;
+$badge-dot-width: 5px;
+$badge-dot-height: 5px;
+$breadcrumbs-even-child-padding: 0 8px;
+$card-btn-margin-x: 16px;
+$data-table-regular-header-height: 72px;
+$data-table-regular-row-height: 72px;
+$tooltip-background-color: #212b36;
+$border-radius-root: 5px;
+$menu-content-elevation: 2;
+$btn-text-transform: none;
+
+$elevation-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+$elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+$elevation-3: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+$elevation-4: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+$elevation-5: 0 14px 28px 0 rgba(0, 0, 0, 0.2);
+$elevation-6: 0 19px 38px 0 rgba(0, 0, 0, 0.1);
+
+$grey-1: #3f4a56;
+$grey-2: #667587;
+$grey-3: #8091a5;
+$grey-4: #b0bac5;
+$grey-5: #dfe6ee;
+$grey-6: #f5f5f5;

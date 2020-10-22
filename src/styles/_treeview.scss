@@ -1,0 +1,7 @@
+.v-treeview-node__checkbox {
+  &::before,
+  &::after {
+    font-size: 16px;
+  }
+  width: 16px !important;
+}

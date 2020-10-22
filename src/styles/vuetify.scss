@@ -1,0 +1,106 @@
+@import '_fonts';
+@import '_reset';
+@import '_tooltip';
+@import '_elevation';
+@import '_color';
+@import '_size';
+@import '_table';
+@import '_treeview';
+@import '_text_field';
+@import '_switch';
+@import '_dialog';
+@import '_breadcrumbs';
+@import '_custom';
+@import '~@artsalliancemedia/iconfont/iconfont.css';
+
+@for $z from 0 through 24 {
+  .shadow-#{$z} {
+    box-shadow: map-get($shadow-key-umbra, $z), map-get($shadow-key-penumbra, $z),
+      map-get($shadow-key-ambient, $z);
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+.sampleInput {
+  &.v-text-field--solo {
+    .v-input__slot {
+      box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.v-breadcrumbs__item {
+  font-weight: bold;
+}
+
+.v-card {
+  transition: ease 0.2s ease-in-out;
+}
+
+.v-dialog {
+  .v-divider {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.dashed {
+  border-style: dashed !important;
+}
+.listTabs {
+  .aam-tabs__content {
+    overflow: inherit;
+  }
+}
+[class^='elevation-'],
+[class*='elevation-'] {
+  transition: 0.1s ease;
+}
+.v-list-item__title {
+  display: flex;
+  align-items: center;
+}
+.v-dialog__content {
+  .v-card__actions {
+    padding: 16px 44px;
+  }
+  .v-card__text + .v-divider {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+.selectTabs + .v-divider {
+  margin-top: 0;
+}
+.v-data-table__checkbox {
+  .v-input--selection-controls__ripple {
+    width: 28px;
+    height: 28px;
+    top: calc(50% - 20px);
+    left: -13px;
+  }
+  .adi-check-square-solid,
+  .adi-minus-square-solid {
+    color: $primary;
+  }
+  .adi {
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+.v-icon--dense {
+  font-size: 16px !important;
+  font-weight: normal;
+}
+
+
+.v-navigation-drawer {
+  .v-divider {
+    margin: 8px 0;
+  }
+}
+.v-messages__message:first-letter {
+  text-transform: capitalize;
+}

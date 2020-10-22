@@ -1,26 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view />
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import cookie from 'js-cookie';
+import moment from 'moment';
+import { updateCookie } from '@/api/base';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
+  created() {
+    if (!cookie.get('locale')) {
+      updateCookie({ key: 'locale', value: 'en-US' });
+      moment.locale('en-US');
+    }
+    this.$router.start();
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
