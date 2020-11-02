@@ -45,7 +45,7 @@ const actions = {
         sessionStorage.setItem('userUuid', response.data.uuid);
         sessionStorage.setItem('isAamUser', response.data.is_aam_user ? 'no' : 'yes');
         sessionStorage.setItem('userName', response.data.username);
-        const { redirect = '/organizations' } = rootGetters.routeQuery;
+        const { redirect = '/task' } = rootGetters.routeQuery;
         // router.push(redirect);
         this._vm.$pushRoute(redirect);
       })
@@ -130,13 +130,13 @@ const actions = {
         sessionStorage.setItem('userUuid', response.data.uuid);
         sessionStorage.setItem('isAamUser', response.data.is_aam_user ? 'no' : 'yes');
         sessionStorage.setItem('userName', response.data.uuid);
-        if (data.organization_uuid !== AAMORGUUID) {
-          // router.replace(`/organizations/${data.organization_uuid}`);
-          this._vm.$pushRoute(`/organizations/${data.organization_uuid}`);
-        } else {
-          // router.replace('/organizations');
-          this._vm.$pushRoute('/organizations');
-        }
+        // if (data.organization_uuid !== AAMORGUUID) {
+        //   // router.replace(`/organizations/${data.organization_uuid}`);
+        //   this._vm.$pushRoute(`/organizations/${data.organization_uuid}`);
+        // } else {
+        //   // router.replace('/organizations');
+        this._vm.$pushRoute('/task');
+        // }
         // dispatch('resetState', null, { root: true });
         dispatch('base/getMenus', null, { root: true });
       })

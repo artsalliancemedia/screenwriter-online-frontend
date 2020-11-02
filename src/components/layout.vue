@@ -4,11 +4,11 @@
       v-model="drawer"
       app
       :clipped="$vuetify.breakpoint.mdAndUp"
-      width="289"
+      width="277"
       mobile-breakpoint="960"
       floating
     >
-      <MyMenu />
+      <Menus />
       <template slot="append">
         <p class="font-weight-black text-center">© Arts Alliance Media</p>
       </template>
@@ -16,7 +16,7 @@
     <v-app-bar
       app
       height="72"
-      color="primary"
+      color="gradient"
       :clipped-left="$vuetify.breakpoint.mdAndUp"
       elevation="1"
       class="appBar"
@@ -27,46 +27,87 @@
       <v-divider class="mx-2 d-md-none" inset vertical dark />
       <v-toolbar-title v-if="$vuetify.breakpoint.mdAndDown">
         <v-img
-          :src="$logo"
+          :src="$logoWhite"
           width="64"
           max-width="48"
           height="48"
           max-height="48"
-          class="ml-2 white-icon"
+          class="ml-2"
         />
       </v-toolbar-title>
 
       <div class="d-md-flex align-center title hidden-sm-and-down pl-2">
         <v-img :src="$logo" width="64" max-width="64" height="64" max-height="64" class="ml-2" />
-        <strong class="ml-4 text-uppercase text-h5 font-weight-bold">
-          Screenwriter
-        </strong>
+        <span class="ml-4 text-uppercase text-h4 font-weight-black">HUB</span>
       </div>
       <v-spacer />
       <v-sheet class="d-flex flex-nowrap align-center" color="transparent">
-        <v-autocomplete
-          dense
+        <v-select
           v-model="currentOrg"
-          color="#fff"
-          prepend-inner-icon="adi-earth"
-          append-icon=""
-          :items="organizations.results"
-          hide-details
-          item-text="name"
-          item-value="uuid"
-          dark
+          :items="orgResults"
           solo
-          background-color="transparent"
+          dense
+          hide-details
           flat
-          item-color="gradient-primary"
-          class="font-weight-bold white--text"
-          :class="{ myOrg: $vuetify.breakpoint.smAndDown }"
-          @change="organizationChange"
-          :style="{ width }"
+          class="organizationWrap"
+          :menu-props="{
+            offsetY: true,
+            left: true,
+            contentClass: 'orgSearchWrap',
+            closeOnContentClick: true,
+          }"
           :error-messages="organizations.message"
           :loading="organizations.loading"
-        />
+          background-color="rgba(0,0,0,0)"
+          append-icon=""
+        >
+          <template v-slot:prepend-item>
+            <v-list-item>
+              <v-text-field
+                @click.stop
+                clearable
+                flat
+                solo
+                hide-details
+                :placeholder="$t('word.search')"
+                dense
+                v-model="searchOrg"
+                append-icon="adi-search-s"
+                class="sampleInput"
+              />
+            </v-list-item>
+          </template>
 
+          <template v-slot:append-item>
+            <v-list-item
+              disabled
+              dense
+              v-show="showNoContent"
+              class="text-capitalize text-center"
+              >{{ $t('word.noContent') }}</v-list-item
+            >
+          </template>
+
+          <template v-slot:selection="{ item }">
+            <div class="d-flex align-center">
+              <v-icon small class="mr-2" color="white">adi-earth</v-icon>
+              <span class="white--text">{{ item.name }}</span>
+            </div>
+          </template>
+
+          <template v-slot:item="{ item }">
+            <v-list-item
+              dense
+              class="orgList"
+              :class="{
+                'gradient-primary--text v-list-item--active': currentOrg.uuid === item.uuid,
+              }"
+              v-show="item.show"
+              @click="() => organizationChange(item.uuid)"
+              >{{ item.name }}</v-list-item
+            >
+          </template>
+        </v-select>
         <v-menu offset-y left>
           <template v-slot:activator="{ on }">
             <v-btn icon v-on="on" color="white">
@@ -156,25 +197,23 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import io from 'socket.io-client';
 import cookie from 'js-cookie';
-import moment from 'moment';
 import { updateCookie } from '@/api/base';
 import Configuration from '@/Configuration';
 import SnackbarAlert from '@/components/snackbarAlert';
 import { LANGUAGES, LANGUAGES_FOR_VUETIFY } from '@/utils/constant';
+import moment from 'moment';
 // import Notification from '@/components/notification';
-import MyMenu from './menus';
+import Menus from '@/components/menus';
 
 @Component({
   components: {
-    MyMenu,
+    Menus,
     SnackbarAlert,
     // Notification,
   },
 })
 export default class Layout extends Vue {
-  // logo = require('@artsalliancemedia/iconfont/svg/admin.svg');
-
-  // logoProducer = require('@artsalliancemedia/iconfont/svg/producer.svg');
+  searchOrg = '';
 
   drawer = null;
 
@@ -183,12 +222,7 @@ export default class Layout extends Vue {
   languages = LANGUAGES;
 
   platforms = [
-    {
-      label: 'HUB',
-      logo: this.$logoAdmin,
-      url: Configuration('hubUrl'),
-      hover: 'gradient',
-    },
+    { label: 'HUB', logo: this.$logo, url: Configuration('hubUrl'), hover: 'gradient' },
     {
       label: 'Producer',
       logo: this.$logoProducer,
@@ -218,11 +252,34 @@ export default class Layout extends Vue {
   }
 
   get orgResults() {
-    return this.organizations.results;
+    // if (this.searchOrg) {
+    // return this.organizations.results.map((item) => item.name.match(this.searchOrg));
+    let { results } = this.organizations;
+    results.map(item => {
+      if (item.name.match(this.searchOrg || '')) {
+        item.show = true;
+      } else {
+        item.show = false;
+      }
+      return true;
+    });
+    return results;
+    // }
+    // this.currentOrg = this.organizations.results.filter((item) => item.uuid === this.account.organization_uuid)[0] || {};
+    // return this.organizations.results;
   }
 
+  get showNoContent() {
+    return this.orgResults.filter(item => item.show).length === 0;
+  }
+
+  // currentOrg = {};
+
   get currentOrg() {
-    return this.orgResults.filter(item => item.uuid === this.account.organization_uuid)[0] || {};
+    return (
+      this.organizations.results.filter(item => item.uuid === this.account.organization_uuid)[0] ||
+      {}
+    );
   }
 
   set currentOrg(val) {
@@ -257,7 +314,7 @@ export default class Layout extends Vue {
     this.$store.dispatch('auth/getOrganizations');
     const vm = this;
     this.io.emit('landing', { from: 'Hub', data: { env: Configuration('env') } });
-    this.io.on('change organization', row => {
+    this.io.on('change organization', function(row) {
       if (vm.currentOrg.uuid !== row.data.uuid) {
         vm.$store.dispatch('auth/changeOrganization', { organization_uuid: row.data.uuid });
       }
@@ -286,6 +343,7 @@ export default class Layout extends Vue {
     if (uuid !== this.account.organization_uuid) {
       this.$store.dispatch('auth/changeOrganization', { organization_uuid: uuid });
     }
+    this.searchOrg = '';
   }
 
   changeLocale(val) {
@@ -329,6 +387,36 @@ export default class Layout extends Vue {
 .myOrg {
   ::v-deep .v-select__slot {
     opacity: 0;
+  }
+}
+.organizationWrap {
+  ::v-deep .v-select__selections {
+    input {
+      width: 0;
+    }
+  }
+}
+.orgSearchWrap {
+  .v-list {
+    padding-top: 0;
+  }
+  .v-list-item {
+    &:first-child {
+      padding: 4px;
+      background-color: #fff;
+      top: -1px;
+      position: sticky;
+      z-index: 2;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  .orgList {
+    &:hover {
+      background-color: $primary;
+      color: #fff !important;
+      cursor: pointer;
+      transition: ease 0.1s;
+    }
   }
 }
 </style>

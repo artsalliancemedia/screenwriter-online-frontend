@@ -11,6 +11,11 @@ module.exports = {
     },
   },
   rules: {
+    'operator-linebreak': 1,
+    'space-before-function-paren': 0,
+    'prefer-const': 1,
+    'prefer-arrow-callback': 0,
+    'max-len': 1,
     'no-unused-vars': 1,
     'comma-dangle': 0,
     'object-curly-newline': 0,
