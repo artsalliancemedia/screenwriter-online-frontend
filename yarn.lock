@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@artsalliancemedia/iconfont@1.0.22":
-  version "1.0.22"
-  resolved "https://registry.npmjs.org/@artsalliancemedia/iconfont/-/iconfont-1.0.22.tgz#a3b8e233a70b5c1d87bc30cc8022a269351acd20"
-  integrity sha512-AFGKuXzSSfSV0AYb4RHHAzuhEcO6f/y7+WRXu5FQRKhqU0OOY3Jql56EdwTfV+Fv88xHLfm/hkdL/1D398rJ9g==
+"@artsalliancemedia/iconfont@1.0.23":
+  version "1.0.23"
+  resolved "https://registry.npmjs.org/@artsalliancemedia/iconfont/-/iconfont-1.0.23.tgz#5c136766b3912360343eeadaf3ccddc8a945727c"
+  integrity sha512-oOSqt6asQXkWuEDPT6OFnaNToccBtOYu1jjcSf2lPm6Qy5AF+s8WCBimxs+x1bZQbTPVqMLpFlvZPy0bvMjENw==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
