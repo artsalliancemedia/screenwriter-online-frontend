@@ -5,7 +5,7 @@
         v-if="item.children"
         class="ma-4 side-group"
         active-class="side-active"
-        :value="hover || expandGroup(item)"
+        :value="expandGroup(item)"
       >
         <template v-slot:activator>
           <v-list-item-content>
