@@ -4,19 +4,28 @@
       v-model="drawer"
       app
       :clipped="$vuetify.breakpoint.mdAndUp"
-      width="277"
+      :width="expandMenu ? 84 : 277"
       mobile-breakpoint="960"
       floating
+      :class="{'shadow-2': expandMenu}"
     >
-      <Menus />
+      <ExpandMenu v-if="expandMenu" />
+      <Menus v-else />
       <template slot="append">
-        <p class="font-weight-black text-center">© Arts Alliance Media</p>
+        <!--        <p class="font-weight-black text-center">© Arts Alliance Media</p>-->
+        <div
+          class="expandMenu d-flex justify-center align-center"
+          :class="{ expand: expandMenu }"
+          @click="expandMenu = !expandMenu"
+        >
+          <v-icon class="white--text">adi-caret-left-double</v-icon>
+        </div>
       </template>
     </v-navigation-drawer>
     <v-app-bar
       app
       height="72"
-      color="gradient"
+      color="primary"
       :clipped-left="$vuetify.breakpoint.mdAndUp"
       elevation="1"
       class="appBar"
@@ -38,7 +47,7 @@
 
       <div class="d-md-flex align-center title hidden-sm-and-down pl-2">
         <v-img :src="$logo" width="64" max-width="64" height="64" max-height="64" class="ml-2" />
-        <span class="ml-4 text-uppercase text-h4 font-weight-black">HUB</span>
+        <strong class="ml-4 text-h5 font-weight-bold">SCREENWRITER</strong>
       </div>
       <v-spacer />
       <v-sheet class="d-flex flex-nowrap align-center" color="transparent">
@@ -204,15 +213,19 @@ import { LANGUAGES, LANGUAGES_FOR_VUETIFY } from '@/utils/constant';
 import moment from 'moment';
 // import Notification from '@/components/notification';
 import Menus from '@/components/menus';
+import ExpandMenu from '@/components/expandMenu';
 
 @Component({
   components: {
+    ExpandMenu,
     Menus,
     SnackbarAlert,
     // Notification,
   },
 })
 export default class Layout extends Vue {
+  expandMenu = false;
+
   searchOrg = '';
 
   drawer = null;
@@ -416,6 +429,30 @@ export default class Layout extends Vue {
       color: #fff !important;
       cursor: pointer;
       transition: ease 0.1s;
+    }
+  }
+}
+.expandMenu {
+  position: relative;
+  height: 48px;
+  cursor: pointer;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 360px;
+    height: 277px;
+    border-radius: 50%;
+    top: 0;
+    background-color: $primary;
+    transition: all 0.2s;
+  }
+  &.expand {
+    &:before {
+      width: 100px;
+      height: 84px;
+    }
+    .v-icon {
+      transform: rotate(180deg);
     }
   }
 }

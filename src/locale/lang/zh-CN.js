@@ -196,6 +196,7 @@ export default {
     setting: '设置',
     match: '匹配',
     screen: '屏幕 | 屏幕',
+    noContent: '无内容',
   },
   phrase: {
     // pagination

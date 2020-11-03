@@ -196,6 +196,7 @@ export default {
     setting: 'setting',
     match: 'match',
     screen: 'screen | screens',
+    noContent: 'no content',
   },
   phrase: {
     // pagination
