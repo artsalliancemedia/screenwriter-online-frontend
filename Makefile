@@ -1,12 +1,5 @@
 default: help
 
-vite:
-	yarn run vite
-
-viteb:
-	yarn run vite-build
-
-
 local:
 	yarn run serve
 
@@ -28,9 +21,9 @@ help:
 
 VERSION_SUFFIX ?= ""
 VERSION ?= $$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[",version: ]//g')$(VERSION_SUFFIX)
-NPM_REGISTRY ?= https://registry.npmjs.org/
+NPM_REGISTRY ?= npm
 REGISTRY ?= 886366864302.dkr.ecr.eu-west-1.amazonaws.com
-IMAGE ?= $(REGISTRY)/artsalliancemedia/hub-frontend
+IMAGE ?= $(REGISTRY)/artsalliancemedia/screenwriter-online-frontend
 NGINX ?= config/nginx.conf
 
 version:

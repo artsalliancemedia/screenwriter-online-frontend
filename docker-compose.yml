@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  screenwriter-online-frontend:
+    image: office-hub.docker.aamcn.com.cn:5000/screenwriter-online-frontend-dev:latest
+    ports:
+      - "8080:80"
+    restart: always

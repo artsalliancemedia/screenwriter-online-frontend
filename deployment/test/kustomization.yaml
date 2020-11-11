@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configMapGenerator:
+  - literals:
+      - VUE_APP_ENV=dev
+      - VUE_APP_BASE_URL=/
+      - VUE_APP_PRODUCER_URL=http://k8s-test-1.aamcn.com.cn:30493
+      - VUE_APP_HUB_URL=http://k8s-test-1.aamcn.com.cn:30494
+      - VUE_APP_SCREENWRITER_ONLINE_URL=http://k8s-test-1.aamcn.com.cn:30498
+      - NODE_HOST=node-frontend:8888
+      - NPM_REGISTRY=taobao
+      - NGINX=config/nginx.conf
+    name: screenwriter-online-frontend-nginx-configmap
+
+generatorOptions:
+  annotations:
+    note: generated
+  disableNameSuffixHash: true
+  labels:
+    type: generated
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
+  - service-patch.yaml
+
+images:
+  - name: screenwriter-online-frontend-nginx
+    newName: office-hub.docker.aamcn.com.cn:5000/artsalliancemedia/screenwriter-online-frontend
+    newTag: latest
+
+resources:
+  - ../base

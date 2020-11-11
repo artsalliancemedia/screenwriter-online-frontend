@@ -1,0 +1,49 @@
+[
+  {
+    "memory": 512,
+    "memoryReservation": 256,
+    "environment": [
+      {
+        "name": "VUE_APP_ENV",
+        "value": "${vue_app_env}"
+      },
+      {
+        "name": "VUE_APP_BASE_URL",
+        "value": "${vue_app_base_url}"
+      },
+      {
+        "name": "VUE_APP_PRODUCER_URL",
+        "value": "${vue_app_producer_url}"
+      },
+      {
+        "name": "VUE_APP_HUB_URL",
+        "value": "${vue_app_hub_url}"
+      },
+      {
+        "name": "VUE_APP_SCREENWRITER_ONLINE_URL",
+        "value": "${vue_app_screenwriter_online_url}"
+      },
+      {
+        "name": "NODE_HOST",
+        "value": "${node_host}"
+      }
+    ],
+    "portMappings": [
+      {
+        "containerPort": 80
+      }
+    ],
+    "essential": true,
+    "name": "${service_name}",
+
+    "image": "${image_name}:${image_tag}",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "eu-west-1",
+        "awslogs-group": "adminui-staging-logs",
+        "awslogs-stream-prefix": "adminui"
+      }
+    }
+  }
+]

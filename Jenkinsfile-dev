@@ -1,0 +1,69 @@
+#!/usr/bin/env groovy
+pipeline {
+
+    agent { node { label 'worker' } }
+
+    triggers {
+        pollSCM('H/30 * * * *')
+    }
+
+    environment {
+        TAG = getTag()
+        REGISTRY = "office-hub.docker.aamcn.com.cn:5000"
+        NPM_REGISTRY = "taobao"
+        IMAGE_NAME = "artsalliancemedia/screenwriter-online-frontend"
+        NGINX = "config/nginx.dev.conf"
+        MARK = getEnvironment()
+    }
+
+    stages {
+        stage('Build') {
+            when { anyOf { branch 'k8s-dev'; branch 'k8s-test'; } }
+            environment {
+                PATH = "/root/node/bin:$PATH"
+            }
+            steps {
+                script {
+                    sh "VERSION=${TAG} NGINX=${NGINX} make docker-build-frontend"
+                    sh "VERSION=${TAG} make docker-push-frontend"
+                }
+            }
+        }
+
+        stage('Deploy') {
+            when { anyOf {branch 'k8s-dev'; branch 'k8s-test'; } }
+            steps {
+                dir ("deployment/${env.MARK}") {
+                    sh "kustomize edit set image screenwriter-online-frontend-nginx=${env.REGISTRY}/${env.IMAGE_NAME}:${env.TAG}"
+                    sh "kustomize build | kubectl --kubeconfig /root/.kube/${env.MARK}-config apply -f -"
+                }
+            }
+        }
+    }
+
+    post {
+        failure {
+            slackSend channel: '#jenkins-cn',
+                      color: '#FF0000',
+                      message: "The pipeline ${currentBuild.fullDisplayName} build FAILED"
+        }
+        success {
+            slackSend channel: '#jenkins-cn',
+                      color: 'good',
+                      message: "The pipeline ${currentBuild.fullDisplayName} build success"
+        }
+    }
+}
+
+def getTag() {
+    if (env.BRANCH_NAME == "master")
+        return sh(script: "make version", returnStdout: true).trim()
+    return sh(script: "VERSION_SUFFIX=b${env.BUILD_NUMBER} make version", returnStdout: true).trim()
+}
+
+def getEnvironment(){
+    if (env.BRANCH_NAME == "k8s-test") {
+        return "test"
+    }
+    return "dev"
+}

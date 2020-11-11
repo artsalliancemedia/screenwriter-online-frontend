@@ -2,16 +2,14 @@
 
 ARG REGISTRY=886366864302.dkr.ecr.eu-west-1.amazonaws.com
 
-FROM $REGISTRY/artsalliancemedia/node-frontend-base:0.0.1 as BUILDER
+FROM $REGISTRY/artsalliancemedia/node-frontend-base:0.0.2-berry as BUILDER
 ARG NPM_REGISTRY=https://registry.npmjs.org/
 LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
-RUN yarn cache clean && \
-    yarn config set registry $NPM_REGISTRY && \
-    yarn config delete proxy && \
-    yarn config delete https-proxy && \
-    yarn install --network-timeout 1000000 && \
+RUN yarn cache clean --all && \
+    yrm use $NPM_REGISTRY && \
+    yarn install && \
     yarn build
 
 FROM $REGISTRY/artsalliancemedia/nginx-alpine:1.18.0

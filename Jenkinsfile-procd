@@ -1,0 +1,38 @@
+#!/usr/bin/env groovy
+pipeline {
+
+    agent { node { label 'aam-identity-prodcd' } }
+
+    environment {
+        TF_VAR_image_name = "artsalliancemedia/screenwriter-online-frontend"
+        TF_VAR_image_tag = sh(script: 'make version', returnStdout: true).trim()
+        TF_VAR_release = sh(script: 'sentry-cli releases propose-version', returnStdout: true).trim()
+        environment = defineEnvironment()
+    }
+
+    stages {
+        stage('Deploy') {
+            environment {
+                TF_VAR_environment = "${env.environment}"
+                AWS_DEFAULT_REGION = 'eu-west-1'
+            }
+            steps {
+                dir ("infrastructure/${env.environment}") {
+                    sh 'terraform init'
+                    sh 'terraform plan -no-color -out=plan'
+                    sh 'terraform apply -auto-approve=true plan'
+                }
+            }
+        }
+    }
+}
+
+def defineEnvironment() {
+    def channel = "${env.channel}"
+    if (channel == "production") {
+        return 'production'
+    }
+    else {
+        return 'staging'
+    }
+}

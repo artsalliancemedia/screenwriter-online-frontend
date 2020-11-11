@@ -3,7 +3,7 @@
 # Replace env
 echo 'Check the env'
 
-if [[ -z $VUE_APP_BASE_URL || -z $VUE_APP_PRODUCER_URL || -z $VUE_APP_HUB_URL || -z $VUE_APP_ENV || -z $NODE_HOST ]]; then
+if [[ -z $VUE_APP_BASE_URL || -z $VUE_APP_PRODUCER_URL || -z $VUE_APP_HUB_URL || -z $VUE_APP_SCREENWRITER_ONLINE_URL || -z $VUE_APP_ENV || -z $NODE_HOST ]]; then
   echo 'one or more variables are undefined'
   exit 1
 fi
@@ -18,7 +18,7 @@ do
     cp $file $file.tmpl.js
   fi
 
-  envsubst '$VUE_APP_BASE_URL,$VUE_APP_PRODUCER_URL,$VUE_APP_HUB_URL,$VUE_APP_ENV' < $file.tmpl.js > $file
+  envsubst '$VUE_APP_BASE_URL,$VUE_APP_PRODUCER_URL,$VUE_APP_HUB_URL,$VUE_APP_SCREENWRITER_ONLINE_URL,$VUE_APP_ENV' < $file.tmpl.js > $file
 done
 
 echo 'Replacing env vars in conf'
