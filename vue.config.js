@@ -39,4 +39,11 @@ module.exports = {
   css: {
     requireModuleExtension: true,
   },
+  pwa: {
+    themeColor: '#029faf',
+    workboxOptions: {
+      skipWaiting: true,
+      clientsClaim: true,
+    },
+  }
 };
