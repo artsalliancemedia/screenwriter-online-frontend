@@ -10,7 +10,7 @@ pipeline {
     environment {
         TAG = getTag()
         REGISTRY = "office-hub.docker.aamcn.com.cn:5000"
-        NPM_REGISTRY = "yarn"
+        NPM_REGISTRY = "cnpm"
         IMAGE_NAME = "artsalliancemedia/screenwriter-online-frontend"
         NGINX = "config/nginx.dev.conf"
         MARK = getEnvironment()
