@@ -82,7 +82,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vue-axios", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:2.1.5"],
             ["vue-class-component", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:7.2.6"],
             ["vue-cli-plugin-vuetify", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:2.0.7"],
-            ["vue-clipboard2", "npm:0.3.1"],
             ["vue-i18n", "npm:8.22.1"],
             ["vue-line-clamp", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:1.3.2"],
             ["vue-property-decorator", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:9.0.2"],
@@ -5168,18 +5167,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["clipboard", [
-        ["npm:2.0.6", {
-          "packageLocation": "./.yarn/cache/clipboard-npm-2.0.6-3d616039e3-25e2e6b595.zip/node_modules/clipboard/",
-          "packageDependencies": [
-            ["clipboard", "npm:2.0.6"],
-            ["good-listener", "npm:1.2.2"],
-            ["select", "npm:1.1.2"],
-            ["tiny-emitter", "npm:2.1.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["clipboardy", [
         ["npm:2.3.0", {
           "packageLocation": "./.yarn/unplugged/clipboardy-npm-2.3.0-9566d5e797/node_modules/clipboardy/",
@@ -6392,15 +6379,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/delayed-stream-npm-1.0.0-c5a4c4cc02-d9dfb0a7c7.zip/node_modules/delayed-stream/",
           "packageDependencies": [
             ["delayed-stream", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["delegate", [
-        ["npm:3.2.0", {
-          "packageLocation": "./.yarn/cache/delegate-npm-3.2.0-d3f849ea99-ccbbf29eb4.zip/node_modules/delegate/",
-          "packageDependencies": [
-            ["delegate", "npm:3.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -8493,16 +8471,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ignore", "npm:4.0.6"],
             ["pify", "npm:4.0.1"],
             ["slash", "npm:2.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["good-listener", [
-        ["npm:1.2.2", {
-          "packageLocation": "./.yarn/cache/good-listener-npm-1.2.2-e7865da849-640a1627e5.zip/node_modules/good-listener/",
-          "packageDependencies": [
-            ["good-listener", "npm:1.2.2"],
-            ["delegate", "npm:3.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -14941,7 +14909,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vue-axios", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:2.1.5"],
             ["vue-class-component", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:7.2.6"],
             ["vue-cli-plugin-vuetify", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:2.0.7"],
-            ["vue-clipboard2", "npm:0.3.1"],
             ["vue-i18n", "npm:8.22.1"],
             ["vue-line-clamp", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:1.3.2"],
             ["vue-property-decorator", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:9.0.2"],
@@ -14958,15 +14925,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["webpack", "virtual:0968de0c7420ca200a1af091e6e1ee0fbe32cc9e66bde00ca285035c2b543dfefbfdcf7cdc9aac28c3251933ad0c71437923976a4a1e07ea9c3634896d35d72f#npm:4.44.2"]
           ],
           "linkType": "SOFT",
-        }]
-      ]],
-      ["select", [
-        ["npm:1.1.2", {
-          "packageLocation": "./.yarn/cache/select-npm-1.1.2-13cd366fa2-66be63b7cf.zip/node_modules/select/",
-          "packageDependencies": [
-            ["select", "npm:1.1.2"]
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["select-hose", [
@@ -16283,15 +16241,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["tiny-emitter", [
-        ["npm:2.1.0", {
-          "packageLocation": "./.yarn/cache/tiny-emitter-npm-2.1.0-2a4d94f487-0055509c72.zip/node_modules/tiny-emitter/",
-          "packageDependencies": [
-            ["tiny-emitter", "npm:2.1.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["tmp", [
         ["npm:0.0.33", {
           "packageLocation": "./.yarn/cache/tmp-npm-0.0.33-bcbf65df2a-77666ca424.zip/node_modules/tmp/",
@@ -17067,16 +17016,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "sass-loader",
             "vuetify-loader"
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["vue-clipboard2", [
-        ["npm:0.3.1", {
-          "packageLocation": "./.yarn/cache/vue-clipboard2-npm-0.3.1-4514dc01ff-539d9fb653.zip/node_modules/vue-clipboard2/",
-          "packageDependencies": [
-            ["vue-clipboard2", "npm:0.3.1"],
-            ["clipboard", "npm:2.0.6"]
           ],
           "linkType": "HARD",
         }]
