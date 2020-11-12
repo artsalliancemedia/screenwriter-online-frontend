@@ -9,7 +9,6 @@ LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
 RUN yrm use $NPM_REGISTRY && \
-    yarn rebuild && \
     yarn install --immutable --immutable-cache && \
     yarn build
 
