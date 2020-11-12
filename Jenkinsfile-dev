@@ -21,10 +21,11 @@ pipeline {
             when { anyOf { branch 'k8s-dev'; branch 'k8s-test'; } }
             environment {
                 PATH = "/root/node/bin:$PATH"
+                NPM_AUTH_TOKEN = "${env.NPM_AUTH_TOKEN}"
             }
             steps {
                 script {
-                    sh "VERSION=${TAG} NGINX=${NGINX} make docker-build-frontend"
+                    sh "VERSION=${TAG} NGINX=${NGINX} NPM_AUTH_TOKEN=${NPM_AUTH_TOKEN} make docker-build-frontend"
                     sh "VERSION=${TAG} make docker-push-frontend"
                 }
             }
