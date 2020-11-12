@@ -8,11 +8,10 @@ ARG NPM_AUTH_TOKEN
 LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
-RUN yarn --version && \
-    npx @yarnpkg/doctor . && \
-    yarn rebuild && \
-    yarn install --immutable --immutable-cache && \
-    yarn build
+RUN yarn --version
+RUN yarn rebuild
+RUN yarn install --immutable --immutable-cache
+RUN yarn build
 
 FROM $REGISTRY/artsalliancemedia/nginx-alpine:1.18.0
 ARG NGINX=config/nginx.conf
