@@ -3,7 +3,6 @@ node_modules
 /dist
 env.local.sh
 
-
 # local env files
 .env.local
 .env.*.local
@@ -23,9 +22,19 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+
+# Not Zero-Installs
+#.yarn/*
+#!.yarn/releases
+#!.yarn/plugins
+#!.yarn/sdks
+#!.yarn/versions
+#.pnp.*
+
+# Zero-Installs
 .yarn/*
+!.yarn/cache
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
-.pnp.*

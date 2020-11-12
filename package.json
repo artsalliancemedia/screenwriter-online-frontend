@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@artsalliancemedia/iconfont": "1.0.25",
+    "@vue/cli-plugin-pwa": "^4.5.8",
     "autoprefixer": "9.8.6",
     "axios": "^0.20.0",
     "core-js": "^3.3.2",
