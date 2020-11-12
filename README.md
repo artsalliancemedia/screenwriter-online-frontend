@@ -11,7 +11,11 @@
 English | [简体中文](./README.zh-CN.md)
 
 ## Development
+#### :collision: &nbsp; `Don not push the token to github`
 ```
+// set the NPM_AUTH_TOKEN or you can create local ignore shell file to save the token
+export NPM_AUTH_TOKEN=*[your npm auth token]*
+
 // install package
 $ yarn
 
