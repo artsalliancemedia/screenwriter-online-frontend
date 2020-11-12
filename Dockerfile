@@ -8,7 +8,8 @@ ARG NPM_AUTH_TOKEN
 LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
-RUN yarn cache clean --all && \
+RUN yarn --version && \
+    npx @yarnpkg/doctor . && \
     yarn rebuild && \
     yarn install --immutable --immutable-cache && \
     yarn build
