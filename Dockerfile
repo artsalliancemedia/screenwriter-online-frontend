@@ -8,8 +8,7 @@ ARG NPM_AUTH_TOKEN
 LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
-RUN yarn cache clean --all && \
-    yrm use $NPM_REGISTRY && \
+RUN yrm use $NPM_REGISTRY && \
     yarn install --immutable --immutable-cache --check-cache && \
     yarn build
 
