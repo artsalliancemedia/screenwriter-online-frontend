@@ -9,7 +9,7 @@ LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
 RUN yrm use $NPM_REGISTRY && \
-    yarn install --immutable --immutable-cache --check-cache && \
+    yarn install --immutable --immutable-cache && \
     yarn build
 
 FROM $REGISTRY/artsalliancemedia/nginx-alpine:1.18.0
