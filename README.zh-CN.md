@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="200" src="./src/assets/aam-logo.svg">
+    <img width="200" src="./src/assets/screenwriter.svg">
 </p>
 
 <h1 align="center">Screenwriter 3.0</h1>
@@ -11,7 +11,11 @@
 [English](./README.md) | 简体中文
 
 ## 开发
+#### :collision: &nbsp; `千万不要将token提交到github上`
 ```
+// 设置 NPM_AUTH_TOKEN 本地创建sh文件用来保存命令(不要提交文件)
+export NPM_AUTH_TOKEN=*[你的npm token]*
+
 // 安装依赖包
 $ yarn
 

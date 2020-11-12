@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="200" src="./src/assets/aam-logo.svg">
+    <img width="200" src="./src/assets/screenwriter.svg">
 </p>
 
 <h1 align="center">Screenwriter 3.0</h1>
@@ -13,7 +13,7 @@ English | [简体中文](./README.zh-CN.md)
 ## Development
 #### :collision: &nbsp; `Don not push the token to github`
 ```
-// set the NPM_AUTH_TOKEN or you can create local ignore shell file to save the token
+// set NPM_AUTH_TOKEN or you can create local ignore shell file to save the token
 export NPM_AUTH_TOKEN=*[your npm auth token]*
 
 // install package
