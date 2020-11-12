@@ -25,6 +25,7 @@ NPM_REGISTRY ?= npm
 REGISTRY ?= 886366864302.dkr.ecr.eu-west-1.amazonaws.com
 IMAGE ?= $(REGISTRY)/artsalliancemedia/screenwriter-online-frontend
 NGINX ?= config/nginx.conf
+NPM_AUTH_TOKEN ?= ''
 
 version:
 	@echo $(VERSION)
@@ -33,6 +34,7 @@ docker-build-frontend:
 	docker build -f Dockerfile \
 	--build-arg REGISTRY=$(REGISTRY) \
 	--build-arg NPM_REGISTRY=$(NPM_REGISTRY) \
+	--build-arg NPM_AUTH_TOKEN=$(NPM_AUTH_TOKEN) \
 	--build-arg NGINX=$(NGINX) \
 	-t $(IMAGE):$(VERSION) .
 
