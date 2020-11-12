@@ -3,7 +3,7 @@
 ARG REGISTRY=886366864302.dkr.ecr.eu-west-1.amazonaws.com
 
 FROM $REGISTRY/artsalliancemedia/node-frontend-base:0.0.2-berry as BUILDER
-ARG NPM_REGISTRY=https://registry.npmjs.org/
+ARG NPM_REGISTRY=npm
 ARG NPM_AUTH_TOKEN
 LABEL stage=node-build
 WORKDIR /app
