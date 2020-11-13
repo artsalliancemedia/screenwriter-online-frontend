@@ -8,7 +8,8 @@ ARG NPM_AUTH_TOKEN
 LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
-RUN yarn config set proxy '' && \
+RUN yarn --version && \
+    yarn config set proxy '' && \
     yarn config set https-proxy '' && \
     yarn install --immutable --immutable-cache && \
     yarn build
