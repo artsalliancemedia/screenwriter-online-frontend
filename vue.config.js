@@ -39,6 +39,14 @@ module.exports = {
   css: {
     requireModuleExtension: true,
   },
+  pwa: {
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      // swSrc is required in InjectManifest mode.
+      swSrc: '/service-worker.js',
+      // ...other Workbox options...
+    }
+  }
   // pwa: {
   //   name: 'ScreenWriter 3.0',
   //   themeColor: '#029faf',
