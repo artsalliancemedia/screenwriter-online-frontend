@@ -40,8 +40,10 @@ module.exports = {
     requireModuleExtension: true,
   },
   pwa: {
+    name: 'ScreenWriter 3.0',
     themeColor: '#029faf',
     workboxOptions: {
+      swSrc: '/service-worker.js',
       skipWaiting: true,
       clientsClaim: true,
     },
