@@ -1,5 +1,8 @@
 <template>
-  <router-view />
+  <div>
+    <router-view />
+    {{isOffline() ? 'i am out' : 'hello there'}}
+  </div>
 </template>
 <script>
 import cookie from 'js-cookie';
@@ -15,5 +18,10 @@ export default {
     }
     this.$router.start();
   },
+  methods: {
+    isOffline() {
+      return window.navigator.onLine;
+    }
+  }
 };
 </script>
