@@ -9,8 +9,6 @@ LABEL stage=node-build
 WORKDIR /app
 COPY ./ /app
 RUN yarn --version && \
-    yarn config set proxy '' && \
-    yarn config set https-proxy '' && \
     yarn install --immutable --immutable-cache && \
     yarn build
 
