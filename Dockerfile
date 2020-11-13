@@ -10,7 +10,7 @@ WORKDIR /app
 COPY ./ /app
 #RUN yarn install --immutable --immutable-cache && \
 #    yarn build
-RUN yarn build
+RUN yarn && yarn build
 
 FROM $REGISTRY/artsalliancemedia/nginx-alpine:1.18.0
 ARG NGINX=config/nginx.conf
