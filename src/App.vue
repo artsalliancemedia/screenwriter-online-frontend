@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     isOffline() {
-      return window.navigator.onLine;
+      return !window.navigator.onLine;
     }
   }
 };
